@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #333 #121212;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Squircle Button Styles */
+.squircle-btn {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: #f97316;
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgba(249, 115, 22, 0.4);
+  transition: all 0.3s ease;
+  z-index: 2;
+  border: none;
+}
+
+/* Smaller version for login/signup pages */
+.squircle-btn-sm {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: #f97316;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+  transition: all 0.3s ease;
+  z-index: 2;
+  border: none;
+}
+
+/* The Chevron Icon (Pure CSS) */
+.chevron {
+  width: 18px;
+  height: 18px;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  transform: rotate(45deg);
+  margin-left: -5px;
+  transition: transform 0.3s ease;
+}
+
+.squircle-btn-sm .chevron {
+  width: 14px;
+  height: 14px;
+  border-top: 2.5px solid white;
+  border-right: 2.5px solid white;
+}
+
+/* The background layers (The "ghost" shapes) */
+.squircle-btn::before,
+.squircle-btn::after,
+.squircle-btn-sm::before,
+.squircle-btn-sm::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f97316;
+  border-radius: inherit;
+  opacity: 0.25;
+  z-index: -1;
+  transition: transform 0.4s ease;
+}
+
+/* Rotate the first layer 15 degrees */
+.squircle-btn::before,
+.squircle-btn-sm::before {
+  transform: rotate(15deg);
+}
+
+/* Rotate the second layer -15 degrees */
+.squircle-btn::after,
+.squircle-btn-sm::after {
+  transform: rotate(-15deg);
+}
+
+/* Hover effect: make the layers spin and the button lift */
+.squircle-btn:hover,
+.squircle-btn-sm:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 15px 50px rgba(249, 115, 22, 0.6);
+}
+
+.squircle-btn:hover .chevron,
+.squircle-btn-sm:hover .chevron {
+  transform: rotate(45deg) translateX(3px);
+}
+
+.squircle-btn:hover::before,
+.squircle-btn-sm:hover::before {
+  transform: rotate(30deg);
+}
+
+.squircle-btn:hover::after,
+.squircle-btn-sm:hover::after {
+  transform: rotate(-30deg);
+}
+
+.squircle-btn:disabled,
+.squircle-btn-sm:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Custom scrollbar for modals */
+.modal-scrollbar {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}
+
+.modal-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* WebKit */
+}
